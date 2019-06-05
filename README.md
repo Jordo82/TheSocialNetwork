@@ -33,6 +33,4 @@ Finally, we can use all this information to create a network plot of all individ
 
 <img src="README_files/figure-markdown_github/social_network-1.png" style="display: block; margin: auto;" />
 
-<img src="README_files/figure-markdown_github/social_network-1.png" alt="no caption" width="800" />
-
 High-quality canvas prints will be available for sale shortly.
