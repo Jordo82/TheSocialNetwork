@@ -34,3 +34,12 @@ Finally, we can use all this information to create a network plot of all individ
 <img src="README_files/figure-markdown_github/social_network-1.png" style="display: block; margin: auto;" />
 
 High-quality canvas prints will be available for sale shortly.
+
+Alternatives
+------------
+
+Glen & Adam suggested that we more clearly show the type of connection between each person. This gets kind of complicated since we're all "connected" now, but we'll try again to focus on the type of initial connection. This data is stored on a [separate tab of the spreadsheet](https://docs.google.com/spreadsheets/d/1YsUYg0vrxi9oyW-0IcuE8XfAKGZb6MR7VlpmdChGI0A/edit#gid=1618818909) with relationship types like "High School", "Dickinson" and "Married".
+
+I'm also going to break my own rules a bit and show Christine as connected with both Sean and Kevin, mostly because it's weird not to see the Robinsons connected. Aww!!!
+
+<img src="README_files/figure-markdown_github/alternative-1.png" style="display: block; margin: auto;" />
