@@ -3,9 +3,8 @@ The Social Network
 
 At any large gathering with our friends, it seems the conversation inevitably turns to how the hell we all came to know each other. Admitedly, I've never been total clear on that point myself. I'll scan the room full of this [ragtag bunch of misfits](https://tvtropes.org/pmwiki/pmwiki.php/Main/RagtagBunchOfMisfits) and always ask myself the same question...
 
-<center>
 <img src="https://memegenerator.net/img/instances/36549336/who-are-these-people.jpg" alt="no caption" width="200" />
-</center>
+
 First Contact
 -------------
 
