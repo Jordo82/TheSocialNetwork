@@ -1,5 +1,5 @@
 ---
-title: "The Social Network (or How Do You Know Kevin?)"
+title: "The Social Network"
 output: github_document
 ---
 
@@ -36,6 +36,7 @@ Links <- data %>%
 #spread Links from long to wide and cluster
 Nodes <- Links %>% 
   spread(key = Target, value = Value, fill = 0)
+set.seed(20190605)
 Nodes$cluster <- kmeans(Nodes[,-1], 4)$cluster
 Nodes <- Nodes %>% 
   select(name = Source, cluster)
@@ -77,15 +78,16 @@ It's tempting to put people into categories, like the "Westtown group" or the "B
 
 Finally, we can use all this information to create a network plot of all individuals and their connections to each other.  Each individual is color-coded based on their cluster.  We can see for example that most of the Westtown group forms a distinct cluster, as does the Dickinson group.  Significant others are a distinct cluster as well!  I'm very curious to see how this evolves as more individuals and connections are added.
 
-```{r social_network, echo=FALSE}
+```{r social_network, echo=FALSE, fig.align="center", fig.width=5, fig.height=8, dpi = 300}
 set.seed(20190605)
 ggraph(social_network, layout = "fr") + 
   geom_edge_link(alpha = 0.2, aes(width = Value)) + 
   geom_node_point(aes(color = cluster), size = 10) + 
   geom_node_text(aes(label = name), color = "white", fontface = "bold", size = 2) + 
   theme_graph() + 
-  theme(legend.position = "none") + 
-  labs(title = "So, how do you know...")
+  theme(legend.position = "none")
 ```
+
+![no caption](README_files/figure-markdown_github/social_network-1.png){width=800px}
 
 High-quality canvas prints will be available for sale shortly.
