@@ -1,0 +1,91 @@
+---
+title: "The Social Network (or How Do You Know Kevin?)"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(googlesheets)
+library(igraph)
+library(ggraph)
+library(knitr)
+
+
+#grab the data from the googlesheet
+data <- "https://docs.google.com/spreadsheets/d/1YsUYg0vrxi9oyW-0IcuE8XfAKGZb6MR7VlpmdChGI0A" %>% 
+  gs_url() %>% 
+  gs_read()
+
+
+#separate the FirstContact column and gather to long format
+Links <- data %>% 
+  separate(FirstContact, 
+           into = paste0("Contact", 1:(max(str_count(data$FirstContact, ",")) + 1)),
+           sep = ",", fill = "right") %>% 
+  gather(-Name, key = Contact, value = Target) %>% 
+  select(Source = Name, Target) %>% 
+  #remove NAs and flag all as 1
+  filter(!is.na(Target)) %>% 
+  mutate(Value = 1,
+         Target = str_trim(Target))
+
+
+
+#spread Links from long to wide and cluster
+Nodes <- Links %>% 
+  spread(key = Target, value = Value, fill = 0)
+Nodes$cluster <- kmeans(Nodes[,-1], 4)$cluster
+Nodes <- Nodes %>% 
+  select(name = Source, cluster)
+
+
+
+#build igraph object from links and nodes
+social_network <- graph_from_data_frame(Links, vertices = Nodes)
+```
+
+
+At any large gathering with my friends, it seems the conversation inevitably turns to how the hell we all came to know each other.  Admitedly, I've never been total clear on that point myself.  I'll scan the room full of this [ragtag bunch of misfits](https://tvtropes.org/pmwiki/pmwiki.php/Main/RagtagBunchOfMisfits) and always ask myself the same question...
+
+![no caption](https://memegenerator.net/img/instances/36549336/who-are-these-people.jpg){width=200px}
+
+
+
+## First Contact
+
+In an effort to settle the question once and for all, I (naturally) created a spreadsheet.  [This Google Sheet](https://docs.google.com/spreadsheets/d/1YsUYg0vrxi9oyW-0IcuE8XfAKGZb6MR7VlpmdChGI0A) contains friends' names as well as each person's list of **"First Contacts"**.  
+
+By First Contact, I mean who are the people you would have known without an introduction from someone else?  For example, my First Contacts include anyone who went to Westtown as well as Sandy.  However, I wouldn't have met anyone from Barleysheaf if it wasn't for one of my First Contacts.
+
+```{r echo=FALSE}
+kable(data[sample(nrow(data), 4),], caption = "A sample of First Contacts")
+```
+
+I know I've gotten some of these wrong.  Please update & add to [the spreadsheet!](https://docs.google.com/spreadsheets/d/1YsUYg0vrxi9oyW-0IcuE8XfAKGZb6MR7VlpmdChGI0A)
+
+
+
+## Clusters of Contacts
+
+It's tempting to put people into categories, like the "Westtown group" or the "Barleysheaf group".  However, some people fit into many such groups, and some fit into none at all.  Instead of categorizing people manually, we can turn to [cluster analysis](https://en.wikipedia.org/wiki/Cluster_analysis) to automatically categorize individuals based on who their first contacts are.  We'll start with four clusters for now, though that may need to be updated as more data is added.
+
+
+
+## Visualising the Connections
+
+Finally, we can use all this information to create a network plot of all individuals and their connections to each other.  Each individual is color-coded based on their cluster.  We can see for example that most of the Westtown group forms a distinct cluster, as does the Dickinson group.  Significant others are a distinct cluster as well!  I'm very curious to see how this evolves as more individuals and connections are added.
+
+```{r social_network, echo=FALSE}
+set.seed(20190605)
+ggraph(social_network, layout = "fr") + 
+  geom_edge_link(alpha = 0.2, aes(width = Value)) + 
+  geom_node_point(aes(color = cluster), size = 10) + 
+  geom_node_text(aes(label = name), color = "white", fontface = "bold", size = 2) + 
+  theme_graph() + 
+  theme(legend.position = "none") + 
+  labs(title = "So, how do you know...")
+```
+
+High-quality canvas prints will be available for sale shortly.
