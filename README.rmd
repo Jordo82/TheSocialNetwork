@@ -48,10 +48,11 @@ social_network <- graph_from_data_frame(Links, vertices = Nodes)
 ```
 
 
-At any large gathering with my friends, it seems the conversation inevitably turns to how the hell we all came to know each other.  Admitedly, I've never been total clear on that point myself.  I'll scan the room full of this [ragtag bunch of misfits](https://tvtropes.org/pmwiki/pmwiki.php/Main/RagtagBunchOfMisfits) and always ask myself the same question...
+At any large gathering with our friends, it seems the conversation inevitably turns to how the hell we all came to know each other.  Admitedly, I've never been total clear on that point myself.  I'll scan the room full of this [ragtag bunch of misfits](https://tvtropes.org/pmwiki/pmwiki.php/Main/RagtagBunchOfMisfits) and always ask myself the same question...
 
+<center>
 ![no caption](https://memegenerator.net/img/instances/36549336/who-are-these-people.jpg){width=200px}
-
+</center>
 
 
 ## First Contact
@@ -78,7 +79,7 @@ It's tempting to put people into categories, like the "Westtown group" or the "B
 
 Finally, we can use all this information to create a network plot of all individuals and their connections to each other.  Each individual is color-coded based on their cluster.  We can see for example that most of the Westtown group forms a distinct cluster, as does the Dickinson group.  Significant others are a distinct cluster as well!  I'm very curious to see how this evolves as more individuals and connections are added.
 
-```{r social_network, echo=FALSE, fig.align="center", fig.width=8, fig.height=5, dpi = 300}
+```{r social_network, echo=FALSE, fig.align="center", fig.width=6, fig.height=4, dpi = 300}
 set.seed(20190605)
 ggraph(social_network, layout = "fr") + 
   geom_edge_link(alpha = 0.2, aes(width = Value)) + 
