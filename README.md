@@ -43,3 +43,9 @@ Glen & Adam suggested that we more clearly show the type of connection between e
 I'm also going to break my own rules a bit and show Christine as connected with both Sean and Kevin, mostly because it's weird not to see the Robinsons connected. Aww!!!
 
 <img src="README_files/figure-markdown_github/alternative-1.png" style="display: block; margin: auto;" />
+
+Sandy suggested that we also show how long the relationship has been going. I added a "Year Met" column to [the second tab of the spreadsheet](https://docs.google.com/spreadsheets/d/1YsUYg0vrxi9oyW-0IcuE8XfAKGZb6MR7VlpmdChGI0A/edit#gid=1618818909); there's a lot of guesswork there on my part so please update it as needed. We can use the length of the relationship to set the thickness of the edges connecting our nodes.
+
+<img src="README_files/figure-markdown_github/alternative2-1.png" style="display: block; margin: auto;" />
+
+I spent longer than I care to admit trying to get the lines in the legend to be thicker, I'll have to come back to it.

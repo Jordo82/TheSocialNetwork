@@ -115,3 +115,27 @@ Links2 %>%
   theme(legend.position = "bottom",
         legend.title = element_text(face = "bold"))
 ```
+
+
+Sandy suggested that we also show how long the relationship has been going.  I added a "Year Met" column to [the second tab of the spreadsheet](https://docs.google.com/spreadsheets/d/1YsUYg0vrxi9oyW-0IcuE8XfAKGZb6MR7VlpmdChGI0A/edit#gid=1618818909); there's a lot of guesswork there on my part so please update it as needed.  We can use the length of the relationship to set the thickness of the edges connecting our nodes.
+
+```{r alternative2, echo=FALSE, fig.align="center", fig.width=6, fig.height=5, dpi = 300, warning=FALSE}
+set.seed(20190605)
+Links2 %>% 
+  mutate(RelationshipLength = 2019 - YearMet) %>% 
+  graph_from_data_frame(vertices = Nodes) %>% 
+  ggraph(layout = "kk") + 
+  geom_edge_link(alpha = 0.5, aes(color = Type, width = RelationshipLength)) + 
+  geom_node_point(aes(color = cluster), size = 10) + 
+  geom_node_text(aes(label = name), color = "white", fontface = "bold", size = 2) + 
+  theme_graph() + 
+  scale_edge_color_brewer(palette = "Accent", name = "Relationship") + 
+  scale_color_brewer(palette = "Set1") + 
+  guides(color = FALSE,
+         edge_width = FALSE) + 
+  theme(legend.position = "bottom",
+        legend.title = element_text(face = "bold"),
+        legend.key.width = unit(2, "cm"))
+```
+
+I spent longer than I care to admit trying to get the lines in the legend to be thicker, I'll have to come back to it.
