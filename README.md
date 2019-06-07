@@ -3,7 +3,7 @@ The Social Network
 
 At any large gathering with our friends, it seems the conversation inevitably turns to how the hell we all came to know each other. Admitedly, I've never been total clear on that point myself. I'll scan the room full of this [ragtag bunch of misfits](https://tvtropes.org/pmwiki/pmwiki.php/Main/RagtagBunchOfMisfits) and always ask myself the same question...
 
-<img src="https://memegenerator.net/img/instances/36549336/who-are-these-people.jpg" alt="no caption" width="200" />
+<img src="seinfeld.jpg" alt="no caption" width="200" />
 
 First Contact
 -------------
@@ -47,5 +47,3 @@ I'm also going to break my own rules a bit and show Christine as connected with 
 Sandy suggested that we also show how long the relationship has been going. I added a "Year Met" column to [the second tab of the spreadsheet](https://docs.google.com/spreadsheets/d/1YsUYg0vrxi9oyW-0IcuE8XfAKGZb6MR7VlpmdChGI0A/edit#gid=1618818909); there's a lot of guesswork there on my part so please update it as needed. We can use the length of the relationship to set the thickness of the edges connecting our nodes.
 
 <img src="README_files/figure-markdown_github/alternative2-1.png" style="display: block; margin: auto;" />
-
-I spent longer than I care to admit trying to get the lines in the legend to be thicker, I'll have to come back to it.

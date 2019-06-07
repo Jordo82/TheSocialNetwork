@@ -50,7 +50,7 @@ Links2 <- "https://docs.google.com/spreadsheets/d/1YsUYg0vrxi9oyW-0IcuE8XfAKGZb6
 
 At any large gathering with our friends, it seems the conversation inevitably turns to how the hell we all came to know each other.  Admitedly, I've never been total clear on that point myself.  I'll scan the room full of this [ragtag bunch of misfits](https://tvtropes.org/pmwiki/pmwiki.php/Main/RagtagBunchOfMisfits) and always ask myself the same question...
 
-![no caption](https://memegenerator.net/img/instances/36549336/who-are-these-people.jpg){width=200px}
+![no caption](seinfeld.jpg){width=200px}
 
 
 ## First Contact
@@ -132,10 +132,9 @@ Links2 %>%
   scale_edge_color_brewer(palette = "Accent", name = "Relationship") + 
   scale_color_brewer(palette = "Set1") + 
   guides(color = FALSE,
-         edge_width = FALSE) + 
+         edge_width = FALSE,
+         edge_color = guide_legend(override.aes = list(edge_width = 5))) + 
   theme(legend.position = "bottom",
         legend.title = element_text(face = "bold"),
         legend.key.width = unit(2, "cm"))
 ```
-
-I spent longer than I care to admit trying to get the lines in the legend to be thicker, I'll have to come back to it.
